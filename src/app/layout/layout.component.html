@@ -18,10 +18,18 @@
 
         <!-- Menu -->
         <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-            <li nz-submenu nzOpen nzTitle="Home" nzIcon="home">
-                <ul>
-                    <li nz-menu-item nzMatchRouter>
-                        <a routerLink="/gifs">GIFs</a>
+            <li
+                *ngFor="let menu of menuItems"
+                nz-submenu
+                [nzOpen]="menu.isOpen"
+                [nzTitle]="menu.title"
+                [nzIcon]="menu.icon || ''">
+                <ul *ngIf="menu.children?.length">
+                    <li
+                        *ngFor="let child of menu.children"
+                        nz-menu-item
+                        nzMatchRouter>
+                        <a [routerLink]="child.url">{{ child.title }}</a>
                     </li>
                 </ul>
             </li>
@@ -32,7 +40,7 @@
         <app-header [(isCollapsed)]="isCollapsed"></app-header>
 
         <nz-content>
-            <div class="inner-content">
+            <div class="py-2 px-3 inner-content">
                 <ng-content></ng-content>
             </div>
         </nz-content>

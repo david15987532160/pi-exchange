@@ -125,7 +125,7 @@ export interface IGIF {
     };
     import_datetime: string;
     is_sticker: number;
-    rating: string;
+    rating: 'y' | 'g' | 'pg' | 'pg-13' | 'r';
     slug: string;
     source: string;
     source_post_url: string;

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
     {
         path: 'gifs',
-        loadChildren: () => import('./pages/gifs/gif-list/gif-list.module').then(m => m.GifListModule)
+        loadChildren: () => import('./pages/gifs/gifs.module').then(m => m.GifsModule)
     },
     { path: '', pathMatch: 'full', redirectTo: '/gifs' },
     // { path: '**', component: PageNotFoundComponent  }
