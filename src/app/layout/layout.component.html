@@ -1,0 +1,40 @@
+<nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar"
+              nzCollapsible
+              nzWidth="256px"
+              nzBreakpoint="md"
+              [nzTrigger]="null"
+              [(nzCollapsed)]="isCollapsed">
+        <!-- App logo -->
+        <div class="sidebar-logo" [ngClass]="{ 'flex-center': isCollapsed }">
+            <a routerLink="/" class="flex-center">
+                <img
+                    [src]="isCollapsed ? 'assets/small-logo.png' : 'assets/full-logo.webp'"
+                    alt="logo"
+                    [ngClass]="{ 'w-70': isCollapsed }"
+                />
+            </a>
+        </div>
+
+        <!-- Menu -->
+        <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+            <li nz-submenu nzOpen nzTitle="Home" nzIcon="home">
+                <ul>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/gifs">GIFs</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nz-sider>
+
+    <nz-layout>
+        <app-header [(isCollapsed)]="isCollapsed"></app-header>
+
+        <nz-content>
+            <div class="inner-content">
+                <ng-content></ng-content>
+            </div>
+        </nz-content>
+    </nz-layout>
+</nz-layout>

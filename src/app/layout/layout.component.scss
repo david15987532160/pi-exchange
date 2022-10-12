@@ -1,0 +1,53 @@
+:host {
+    display: flex;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.w-70 {
+    width: 70% !important;
+}
+
+.app-layout {
+    height: 100vh;
+    flex-direction: row;
+}
+
+.menu-sidebar {
+    position: relative;
+    min-height: 100vh;
+    z-index: 10;
+    box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+}
+
+.sidebar-logo {
+    position: relative;
+    height: 64px;
+    line-height: 64px;
+    overflow: hidden;
+    background: #fff;
+    transition: all .3s;
+}
+
+.sidebar-logo img {
+    width: 100%;
+    object-fit: contain;
+}
+
+nz-content {
+    margin: 24px;
+}
+
+.inner-content {
+    height: 100%;
+    padding: 24px;
+    background: #fff;
+}
+
