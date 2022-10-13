@@ -8,6 +8,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { IconsProviderModule } from '@app/icons-provider.module';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
         NzFormModule,
         NzModalModule,
         NzToolTipModule,
+        NzPageHeaderModule,
         IconsProviderModule,
     ],
     exports: [
@@ -32,6 +34,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
         NzFormModule,
         NzModalModule,
         NzToolTipModule,
+        NzPageHeaderModule,
         IconsProviderModule,
     ]
 })

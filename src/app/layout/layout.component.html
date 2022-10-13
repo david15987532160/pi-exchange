@@ -1,13 +1,13 @@
 <nz-layout class="app-layout">
     <nz-sider class="menu-sidebar"
               nzCollapsible
-              nzWidth="256px"
+              nzWidth="200px"
               nzBreakpoint="md"
               [nzTrigger]="null"
               [(nzCollapsed)]="isCollapsed">
         <!-- App logo -->
         <div class="sidebar-logo" [ngClass]="{ 'flex-center': isCollapsed }">
-            <a routerLink="/" class="flex-center">
+            <a routerLink="/" class="h-100 flex-center">
                 <img
                     [src]="isCollapsed ? 'assets/small-logo.png' : 'assets/full-logo.webp'"
                     alt="logo"
@@ -40,7 +40,7 @@
         <app-header [(isCollapsed)]="isCollapsed"></app-header>
 
         <nz-content>
-            <div class="py-2 px-3 inner-content">
+            <div class="p-3 inner-content">
                 <ng-content></ng-content>
             </div>
         </nz-content>

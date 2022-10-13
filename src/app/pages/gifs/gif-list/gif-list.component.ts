@@ -4,6 +4,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { GifListService } from '@app/pages/gifs/gif-list/services/gif-list.service';
 import { IGIF } from '@app/pages/gifs/models/gif.model';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { RatingEnum } from '@shared/enums/rating.enum';
 
 @Component({
     selector: 'app-gif-list',
@@ -12,9 +13,11 @@ import { NzModalService } from 'ng-zorro-antd/modal';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GifListComponent {
-    gifsByCols$: Observable<IGIF[][]> = this.getTrendingGifs.pipe(map(res => this.splitToCols(res, 4)),);
+    gifsByCols$: Observable<IGIF[][]> = this.getTrendingGifs.pipe(map(res => this.splitToCols(res, 4)));
 
     isLoading = true;
+
+    RatingEnum = RatingEnum;
 
     constructor(
         private cdRef: ChangeDetectorRef,
@@ -46,13 +49,14 @@ export class GifListComponent {
         return res;
     };
 
-    createTplModal(tplTitle: TemplateRef<{}>, tplContent: TemplateRef<{}>): void {
+    openImageModal(modalTitle: TemplateRef<{}>, modalContent: TemplateRef<{}>): void {
         const modalRef = this.modalService.create({
-            nzTitle: tplTitle,
-            nzContent: tplContent,
+            nzTitle: modalTitle,
+            nzContent: modalContent,
             nzMaskClosable: false,
             nzClosable: false,
             nzStyle: { top: '20px' },
+            nzBodyStyle: { padding: '0' },
         });
     }
 
