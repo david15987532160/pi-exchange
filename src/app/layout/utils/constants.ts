@@ -8,7 +8,7 @@ export const MENU_ITEMS: IMenuItem[] = [
         children: [
             {
                 title: 'GIFs',
-                url: '/gifs'
+                url: '/gif-list'
             }
         ]
     }

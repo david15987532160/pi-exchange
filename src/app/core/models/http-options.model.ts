@@ -1,4 +1,4 @@
-import { HttpContext, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpContext, HttpHeaders } from '@angular/common/http';
 
 export interface IHttpJsonOptions {
     headers?: HttpHeaders | {
@@ -6,9 +6,6 @@ export interface IHttpJsonOptions {
     };
     context?: HttpContext;
     observe?: 'body';
-    params?: HttpParams | {
-        [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean>;
-    };
     reportProgress?: boolean;
     responseType?: 'json';
     withCredentials?: boolean;
