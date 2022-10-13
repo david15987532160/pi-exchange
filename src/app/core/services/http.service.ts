@@ -14,8 +14,11 @@ export class HttpService {
         return `${ environment.apiUrl }${ url }`;
     }
 
-    get<T = any>(url: string, options?: IHttpJsonOptions): Observable<T> {
-        const defaultOptions = { params: { ...this.defaultParams }, ...options };
-        return this.http.get<T>(this.generateUrl(url), defaultOptions);
+    get(url: string, params?: { [k: string]: any }, options?: IHttpJsonOptions): Observable<any> {
+        const defaultOptions = {
+            params: { ...this.defaultParams, ...params },
+            ...options
+        };
+        return this.http.get(this.generateUrl(url), defaultOptions);
     }
 }

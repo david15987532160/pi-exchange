@@ -1,3 +1,5 @@
+import { RatingEnum } from '@shared/enums/rating.enum';
+
 export interface ISize {
     height: string;
     width: string;
@@ -125,7 +127,7 @@ export interface IGIF {
     };
     import_datetime: string;
     is_sticker: number;
-    rating: string;
+    rating: keyof typeof RatingEnum;
     slug: string;
     source: string;
     source_post_url: string;

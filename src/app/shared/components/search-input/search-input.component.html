@@ -1,0 +1,18 @@
+<nz-input-group nzSearch [nzSuffix]="inputClearTpl" [nzAddOnAfter]="suffixIcon">
+    <input type="text" nz-input placeholder="Search for GIFs" [formControl]="searchControl"/>
+</nz-input-group>
+
+<ng-template #inputClearTpl>
+      <span
+          *ngIf="searchControl.value"
+          nz-icon
+          class="ant-input-clear-icon"
+          nzTheme="fill"
+          nzType="close-circle"
+          (click)="clear()"
+      ></span>
+</ng-template>
+
+<ng-template #suffixIcon>
+    <button nz-button nzType="primary" nzSearch><span nz-icon nzType="search"></span></button>
+</ng-template>

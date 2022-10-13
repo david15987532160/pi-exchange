@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-between mb-4">
+    <div class="d-flex align-items-center">
+        <span nz-icon nzType="rise" class="fs-3 text-primary"></span>
+        <h4 class="ps-2 mb-0 fw-bold">Trending</h4>
+    </div>
+
+    <app-search-input (searchChange)="setSearchText($event || '')"></app-search-input>
+</div>
+
+<nz-spin nzSize="large" [nzSpinning]="isLoading">
+    <div class="gallery">
+        <div *ngFor="let gifsInCol of gifsByCols$ | async" class="gallery__column">
+            <a *ngFor="let gif of gifsInCol; trackBy: trackByFn"
+               class="gallery__link"
+               (click)="openImageModal(modalTitle, modalContent)">
+                <figure class="gallery__thumb">
+                    <img class="gallery__image" [src]="gif.images.original.url" [alt]="gif.username" loading="lazy">
+                    <figcaption class="gallery__caption">{{ gif.username }}</figcaption>
+                </figure>
+
+                <!-- Modal title -->
+                <ng-template #modalTitle>
+                    <span class="text-white">{{ gif.title }}</span>
+                </ng-template>
+
+                <!-- Modal body -->
+                <ng-template #modalContent>
+                    <figure class="gallery__thumb no-transform">
+                        <img
+                            class="mb-3 gallery__image"
+                            loading="lazy"
+                            [src]="gif.images.original.url"
+                            [alt]="gif.username">
+
+                        <div class="d-flex justify-content-between px-3">
+                            <p *ngIf="gif.user?.profile_url">
+                                Uploaded by:
+                                <a
+                                    nz-tooltip="View author's profile"
+                                    target="_blank"
+                                    [href]="gif.user?.profile_url">
+                                    {{ gif.username }}
+                                </a>
+                            </p>
+                            <p>
+                                Rating
+                                <sup>
+                                    <span
+                                        nz-icon
+                                        nzType="question-circle"
+                                        nz-tooltip="Rating is based on MPAA-style system"
+                                        class="fs-6 text-black-50 hover-pointer">
+                                    </span>
+                                </sup> :
+                                <b [nz-tooltip]="RatingEnum[gif.rating]" class="hover-pointer">
+                                    {{ gif.rating.toUpperCase() }}
+                                </b>
+                            </p>
+                        </div>
+
+                        <a target="_blank" class="px-3" [href]="gif.url">View GIF on Giphy</a>
+                    </figure>
+                </ng-template>
+            </a>
+        </div>
+    </div>
+</nz-spin>
